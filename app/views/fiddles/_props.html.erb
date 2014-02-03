@@ -1,0 +1,15 @@
+<div id='props'>
+
+  <input id='category' value=''>
+
+  <div id="langs">  
+    <% Lang.all.each do |l| %>
+      <div class="panelicon" id='lang_<%= l.code %>' onclick="editor.setLang('<%= l.code %>');"><%= l.title.gsub('_','/') %></div>
+    <% end %>
+  </div>  
+   
+</div>
+
+
+
+

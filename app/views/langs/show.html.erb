@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lang.title %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @lang.code %>
+</p>
+
+<p>
+  <strong>Content-type</strong>
+  <%= @lang.content_type %>
+</p>
+
+<%= link_to 'Edit', edit_lang_path(@lang) %> |
+<%= link_to 'Back', langs_path %>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= @fiddle.title %></title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <link href="/fiddles/49" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <% md = RDiscount.new(@fiddle.code, :smart, :footnotes ).to_html %>
+  <%= raw ( @preview ? md.gsub("/fiddles/","/fiddles/preview/") : md ) %>
+</body>
+</html>

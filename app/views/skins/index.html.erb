@@ -1,0 +1,29 @@
+<h1>Listing skins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Code</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @skins.each do |skin| %>
+      <tr>
+        <td><%= skin.title %></td>
+        <td><%= skin.code %></td>
+        <td><%= link_to 'Show', skin %></td>
+        <td><%= link_to 'Edit', edit_skin_path(skin) %></td>
+        <td><%= link_to 'Destroy', skin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Skin', new_skin_path %>

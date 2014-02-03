@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= @site.title %></title>
+  <link href="<%= @theme_url %>" rel="stylesheet" type="text/css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/fiddles/319"></script>
+  
+</head>
+<body class='index'>
+
+  <h1><%= @site.title %></h1>
+  
+  <div class='row js-masonry'   data-masonry-options='{ "columnWidth": 280, "itemSelector": ".lang" }'>
+  <% @tree.each_pair do |k1,v1| %>      
+    <div class='lang'>
+  
+       <h2><%= k1 %></h2>
+       
+       <% v1.each do |k2,v2| %>
+       <div class='folder'>          
+          
+           <h3>
+              <span class='part'>
+                <%= k2 %>
+              </span>
+           </h3>
+
+            <div class='files'>
+               <% v2.each do |f| %>
+                  <a target='_blank' href='<%= edit_fiddle_url( f ) %>'><%= f.title %></a>
+               <% end %>
+            </div>
+           
+       </div>
+       <% end %>
+       
+
+    
+    </div>
+    
+  <% end %>  
+  </div>
+
+
+</body>
+</html>
+

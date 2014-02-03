@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @skin.title %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @skin.code %>
+</p>
+
+<%= link_to 'Edit', edit_skin_path(@skin) %> |
+<%= link_to 'Back', skins_path %>

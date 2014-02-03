@@ -1,0 +1,33 @@
+<h1>Listing langs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Code</th>
+      <th>Mime</th>
+      <th>Category</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @langs.each do |lang| %>
+      <tr>
+        <td><%= lang.title %></td>
+        <td><%= lang.code %></td>
+        <td><%= lang.content_type %></td>
+        <td><%= lang.category %></td>
+        <td><%= link_to 'Show', lang %></td>
+        <td><%= link_to 'Edit', edit_lang_path(lang) %></td>
+        <td><%= link_to 'Destroy', lang, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lang', new_lang_path %>

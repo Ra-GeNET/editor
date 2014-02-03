@@ -1,0 +1,37 @@
+<%= form_for(@extmap) do |f| %>
+  <% if @extmap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@extmap.errors.count, "error") %> prohibited this extmap from being saved:</h2>
+
+      <ul>
+      <% @extmap.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :suffix %><br>
+    <%= f.text_field :suffix %>
+  </div>
+  <div class="field">
+    <%= f.label :lang %><br>
+    <%= f.select( :lang_id, Lang.all.collect {|l| [ l.title, l.id ] }, {include_blank: 'None'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :noindex %><br>
+    <%= f.check_box :noindex %>
+  </div>
+  <div class="field">
+    <%= f.label :noedit %><br>
+    <%= f.check_box :noedit %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

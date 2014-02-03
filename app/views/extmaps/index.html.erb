@@ -1,0 +1,34 @@
+<h1>Listing extmaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Suffix</th>
+      <th>Lang</th>
+      <th>Category</th>
+      <th>Index?</th>
+      <th>Edit?</th>
+      <th></th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @extmaps.each do |extmap| %>
+      <tr>
+        <td><%= extmap.suffix %></td>
+        <td><%= extmap.lang ? extmap.lang.title : '(auto-detect)' %></td>
+        <td><%= extmap.category %></td>
+        <td><%= extmap.noindex ? "Hide" : "Show" %></td>                
+        <td><%= extmap.noedit ? "Block" : "Import" %></td>
+        <td><%= link_to 'Edit', edit_extmap_path(extmap) %></td>
+        <td><%= link_to 'Destroy', extmap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Extmap', new_extmap_path %>

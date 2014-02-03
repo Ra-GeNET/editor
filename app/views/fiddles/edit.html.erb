@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= @fiddle.title %></title>
+  <link href="<%= @theme_url %>" rel="stylesheet" type="text/css">  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="/moment.min.js"></script>
+  <script src="/ace-min-noconflict/ace.js"></script>
+  <script src="/ace-min-noconflict/ext-language_tools.js"></script>
+  <script src="/editor.js"></script>
+
+
+</head>
+<body class='edit'>
+
+<div id='panel'>
+<div id='menu'>
+<a id='go_preview' alt='CTRL+ENTER'>preview</a><a id='go_props' alt='CTRL+.'>props</a><a id='go_looks' alt='ALT+.'>looks</a><a id='go_help' alt='F1'>help</a><a id='go_close' alt='ESCAPE'>close</a>
+</div>
+<input id="title" placeholder="Title">
+<a id='url' href='/fiddle/51'>/fiddle/51</a>
+<%= render "preview" %>
+<%= render "looks" %>
+<%= render "props" %>
+<%= render "help" %>
+</div>
+
+<pre id='editor'></pre>
+
+<script>
+
+  var editor = new Editor;
+  editor.enableIO();
+  editor.setHome('<%= fiddle_url( @fiddle ) %>.json');
+  editor.enableDirtyTracking();
+  editor.enableAutoSave();
+  editor.enablePanel();
+  editor.enablePreview(); 
+  editor.enableProps();
+  editor.enableLooks();
+  editor.enableHelp();
+  
+  editor.setPanel('props');
+  editor.setPanelSize('370px','left');
+  
+
+</script>
+
+
+</body>
+</html>
+
+
+

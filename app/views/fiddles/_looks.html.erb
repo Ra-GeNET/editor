@@ -1,0 +1,11 @@
+<div id='looks'>
+  <div id="skins">
+     <% Skin.all.each do |s| %>
+       <div class="panelicon" id='skin_<%= s.code.gsub('ace/theme/', '') %>' onclick="editor.setSkin('<%= s.code %>');"><%= s.title.gsub('_',' ') %></div>
+     <% end %>
+  </div>
+</div>
+
+
+
+

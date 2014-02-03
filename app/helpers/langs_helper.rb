@@ -1,0 +1,2 @@
+module LangsHelper
+end

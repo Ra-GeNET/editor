@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>DevStar Web Editor</title>
+  <style type="text/css" media="screen">
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-image: url(/img/stardust.png);
+        }
+
+    #editor {
+        margin: 0;
+        position: absolute;
+        top: 80px;
+        bottom: 0;
+        left: 235px;
+        right: 0;
+        opacity: 0.6;
+        font-size: 20px;
+        line-height: 35px;;
+    }
+
+    #header {
+        height: 30px;
+        width: 100%;
+        background-color: #d2d2d2;
+        opacity: 0.2;
+        border: 1 px solid #666666;
+        padding-top: 20px;
+    }
+
+    .tab {
+      border: 1px solid;
+      height: 30px;
+      width: 100px;
+    }
+
+    #search {
+      width: 177px;
+      height: 48px;
+      font-size: 20px;
+      opacity: 0.2;
+      text-align: left;
+      padding-left: 50px;
+      background-color: #d2d2d2;
+      background-image: url(/img/search.png);
+      background-position: 0px 0px;
+      background-repeat: no-repeat;
+      }
+
+    #files {
+      width: 230px;
+      height: 850px;
+      }
+
+    #files a.folder {
+      text-decoration: none;
+      color: #777;
+      font-size: 17px;
+      display: block;
+
+    }
+
+    #files ul {
+      list-style-type: square;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="header">
+
+  <select id="langSelect">
+    <option><%   %></option>
+  </select>
+
+  <select id="Skin">
+    <option><%   %></option>
+  </select>
+
+
+</div>
+<div id="files">
+<input id="search" value="Search"></input>
+
+<ul>
+ <li><a class="folder" href="#">config</a></li>
+ <li><a class="folder" href="#">public</a></li>
+
+ <ul>
+  <li><a class="folder" href="#">css</a></li>
+  <li><a class="folder" href="#">js</a></li>
+  <li><a class="folder" href="#">inc</a></li>
+  <li><a class="folder" href="#">html</a></li>
+  <li><a class="folder" href="#">rb</a></li>
+  <li><a class="folder" href="#">img</a></li>
+ </ul>
+
+</ul>
+
+</div>
+
+ <div class="tab"> </div>
+
+ <pre id="editor">
+  function foo(items) {
+      var i;
+      for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+      }
+   }
+  </pre>
+
+   <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/terminal");
+      editor.getSession().setMode("ace/mode/javascript");
+    </script>
+</body>
+</html>
