@@ -23,7 +23,7 @@ class Fiddle < ActiveRecord::Base
       
       ff = Fiddle.where( :file_path => fn.gsub( s.file_path,''), :site => s ).first
       unless ff then
-        ff = Fiddle.new :file_path => fn, :code => "", :skin => "ambiance", :lineheight => "24px", :fontsize => "16px", :site => s
+        ff = Fiddle.new :file_path => fn, :code => "", :skin => "chaos", :lineheight => "24px", :fontsize => "16px", :site => s
         ff.set_file_path
       end      
       ff = Extmap.suggest( ff, s.automap )                      

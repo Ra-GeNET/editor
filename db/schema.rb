@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20140203141332) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "preview_url"
     t.boolean  "automap"
   end
 

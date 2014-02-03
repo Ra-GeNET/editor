@@ -18,7 +18,7 @@ class SitesController < ApplicationController
   # GET /sites/1
   # GET /sites/1.json
   def show
-    result = Fiddle.tree( @site.fiddles.where( :noindex => false, :deleted_at => nil ) )
+    result = Fiddle.tree( @site.fiddles.where( :noindex => false, :deleted_at => nil ).order('title COLLATE NOCASE') )
     result = result.sort_by { |k,v| k }
     @tree = Hash[*result.flatten]
     render :show, :layout => false

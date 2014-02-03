@@ -17,12 +17,11 @@
 
 <div id='panel'>
 <div id='menu'>
-<a id='go_preview' alt='CTRL+ENTER'>preview</a><a id='go_props' alt='CTRL+.'>props</a><a id='go_looks' alt='ALT+.'>looks</a><a id='go_help' alt='F1'>help</a><a id='go_close' alt='ESCAPE'>close</a>
+<a id='go_preview' alt='CTRL+ENTER'>preview</a><a id='go_props' alt='CTRL+.'>props</a><a id='go_help' alt='F1'>help</a><a id='go_close' alt='ESCAPE'>close</a>
 </div>
 <input id="title" placeholder="Title">
 <a id='url' href='/fiddle/51'>/fiddle/51</a>
 <%= render "preview" %>
-<%= render "looks" %>
 <%= render "props" %>
 <%= render "help" %>
 </div>
@@ -39,7 +38,7 @@
   editor.enablePanel();
   editor.enablePreview(); 
   editor.enableProps();
-  editor.enableLooks();
+  //editor.enableLooks();
   editor.enableHelp();
   
   editor.setPanel('props');

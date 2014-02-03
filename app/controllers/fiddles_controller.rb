@@ -1,5 +1,5 @@
 class FiddlesController < ApplicationController
-   http_basic_authenticate_with name: "rara", password: "shift123!@#", :except => [:show,:preview]
+  http_basic_authenticate_with name: "rara", password: "shift123!@#", :except => [:show,:preview]
   before_action :set_fiddle, only: [:show, :preview, :edit, :update, :destroy]
   before_action :set_help
   layout false
@@ -15,7 +15,7 @@ class FiddlesController < ApplicationController
     Site.all.each do |s|
       @tree['Sites'][s.file_path] = [s]
     end
-    result = Fiddle.tree( Fiddle.where( :noindex => false, :deleted_at => nil ).where("file_path is NULL").order('title ASC') )
+    result = Fiddle.tree( Fiddle.where( :noindex => false, :deleted_at => nil ).where("file_path is NULL").order('title COLLATE NOCASE') )
     result = result.sort_by { |k,v| k }
     result = Hash[*result.flatten]
     @tree = @tree.merge result
@@ -72,13 +72,14 @@ class FiddlesController < ApplicationController
     if @fiddle.file_path && !authenticate_with_http_basic { |u, p| u == "rara" && p == "shift123!@#" } then
       render :file => "public/401", :status => :unauthorized
     else
-      if @fiddle.lang == "markdown" then
+      l = @fiddle.lang.title
+      if l == "Markdown" then
         render :markdown
-      elsif @fiddle.lang == "textile" then
+      elsif l == "Textile" then
         render :textile
-      elsif @fiddle.lang == "less" then
+      elsif l == "Less" then
         render :less
-      elsif @fiddle.lang == "scss" then
+      elsif l == "Scss" then
         render :scss
       else
         render :text => @fiddle.code, :content_type => @fiddle.lang.content_type
