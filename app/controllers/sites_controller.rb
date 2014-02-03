@@ -20,12 +20,6 @@ class SitesController < ApplicationController
     result = Fiddle.tree( @site.fiddles.where( :noindex => false, :deleted_at => nil ) )
     result = result.sort_by { |k,v| k }
     @tree = Hash[*result.flatten]
-
-    if params[:theme] then
-      @theme_url = "/fiddles/#{params[:theme]}"
-    else
-      @theme_url = "/fiddles/40"
-    end    
     render :show, :layout => false
   end
   
@@ -33,11 +27,6 @@ class SitesController < ApplicationController
   # GET /sites/1/all.json
   def all
     @tree = Fiddle.tree( @site.fiddles.where( :deleted_at => nil ) )
-    if params[:theme] then
-      @theme_url = "/fiddles/#{params[:theme]}"
-    else
-      @theme_url = "/fiddles/40"
-    end    
     render :show, :layout => false
   end
 
@@ -45,11 +34,6 @@ class SitesController < ApplicationController
   # GET /sites/1/trash.json
   def trash
     @tree = Fiddle.tree( @site.fiddles.where( "deleted_at IS NOT NULL" ) )
-    if params[:theme] then
-      @theme_url = "/fiddles/#{params[:theme]}"
-    else
-      @theme_url = "/fiddles/40"
-    end    
     render :show, :layout => false
   end
 

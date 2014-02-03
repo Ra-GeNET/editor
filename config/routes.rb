@@ -2,7 +2,6 @@ Editor::Application.routes.draw do
 
   get 'fiddles/:id/preview' => 'fiddles#preview'  
   get 'fiddles/:id/edit/:title' => 'fiddles#edit'
-  get 'sites/:id/:title' => 'sites#show'
 
   resources :fiddles do
     member do

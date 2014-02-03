@@ -6,7 +6,7 @@
   <title>RAGE/fiddles</title>
   <link href="<%= @theme_url %>" rel="stylesheet" type="text/css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <script src="/fiddles/319"></script>
+  <script src="/masonry.js"></script>
   
 </head>
 <body class='index'>
@@ -31,7 +31,7 @@
                   <% if f.instance_of? Fiddle then %>
                     <a target='_blank' href='<%= edit_fiddle_url( f ) %>/<%= f.title.parameterize %>'><%= f.title %></a>
                   <% else %>
-                    <a target='_blank' href='<%= site_url( f ) %>/<%= f.title.parameterize %>'><%= f.title %></a>
+                    <a target='_blank' href='<%= site_url( f ) %>'><%= f.title %></a>
                   <% end %>
                <% end %>
             </div>
