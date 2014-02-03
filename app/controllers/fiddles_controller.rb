@@ -1,4 +1,5 @@
 class FiddlesController < ApplicationController
+   http_basic_authenticate_with name: "rara", password: "shift123!@#", :except => [:show,:preview]
   before_action :set_fiddle, only: [:show, :preview, :edit, :update, :destroy]
   before_action :set_help
   layout false

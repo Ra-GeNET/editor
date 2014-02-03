@@ -1,4 +1,5 @@
 class SitesController < ApplicationController
+  http_basic_authenticate_with name: "rara", password: "shift123!@#"
   before_action :set_site, only: [:show, :edit, :update, :destroy, :refresh]
 
   # GET /sites/1/refresh
