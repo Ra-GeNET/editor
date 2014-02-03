@@ -25,8 +25,8 @@ class Fiddle < ActiveRecord::Base
       unless ff then
         ff = Fiddle.new :file_path => fn, :code => "", :skin => "ambiance", :lineheight => "24px", :fontsize => "16px", :site => s
         ff.set_file_path
-      end
-      ff = Extmap.suggest( ff )                      
+      end      
+      ff = Extmap.suggest( ff, s.automap )                      
       ff.load_from_disk true if ff
             
     end    

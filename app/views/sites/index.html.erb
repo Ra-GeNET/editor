@@ -5,6 +5,7 @@
     <tr>
       <th>File path</th>
       <th>Title</th>
+      <th>Automap</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= site.file_path %></td>
         <td><%= site.title %></td>
+        <td><%= site.automap ? "Yes" : "No"  %></td>
         <td><%= link_to 'Show', site %></td>
         <td><%= link_to 'Refresh', refresh_site_url( site ) %></td>
         <td><%= link_to 'Edit', edit_site_path(site) %></td>

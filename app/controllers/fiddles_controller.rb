@@ -42,41 +42,47 @@ class FiddlesController < ApplicationController
     render :index
   end
 
-
-
   # GET /fiddles/1
   # GET /fiddles/1.json
   def show
-    respond_to do |format|
-      l = @fiddle.lang.title
-      if l == "Markdown" then
-        format.html { render :markdown }
-      elsif l == "Textile" then
-        format.html { render :textile }
-      elsif l == "Less" then
-        format.html { render :less }
-      elsif l == "Scss" then
-        format.html { render :scss }
-      else
-        format.html { render :text => @fiddle.code, :content_type => @fiddle.lang.content_type }
+    if @fiddle.file_path && !authenticate_with_http_basic { |u, p| u == "rara" && p == "shift123!@#" } then
+      render :file => "public/401", :status => :unauthorized
+    else
+      respond_to do |format|
+        l = @fiddle.lang.title
+        if l == "Markdown" then
+          format.html { render :markdown }
+        elsif l == "Textile" then
+          format.html { render :textile }
+        elsif l == "Less" then
+          format.html { render :less }
+        elsif l == "Scss" then
+          format.html { render :scss }
+        else
+          format.html { render :text => @fiddle.code, :content_type => @fiddle.lang.content_type }
+        end
+        format.json 
       end
-      format.json 
     end
   end
   
   # GET /fiddles/1/preview
   # GET /fiddles/1.json
   def preview
-    if @fiddle.lang == "markdown" then
-      render :markdown
-    elsif @fiddle.lang == "textile" then
-      render :textile
-    elsif @fiddle.lang == "less" then
-      render :less
-    elsif @fiddle.lang == "scss" then
-      render :scss
+    if @fiddle.file_path && !authenticate_with_http_basic { |u, p| u == "rara" && p == "shift123!@#" } then
+      render :file => "public/401", :status => :unauthorized
     else
-      render :text => @fiddle.code, :content_type => @fiddle.lang.content_type
+      if @fiddle.lang == "markdown" then
+        render :markdown
+      elsif @fiddle.lang == "textile" then
+        render :textile
+      elsif @fiddle.lang == "less" then
+        render :less
+      elsif @fiddle.lang == "scss" then
+        render :scss
+      else
+        render :text => @fiddle.code, :content_type => @fiddle.lang.content_type
+      end
     end
   end
 

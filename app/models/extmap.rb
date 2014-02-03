@@ -3,7 +3,7 @@ class Extmap < ActiveRecord::Base
   before_save :set_defaults
   belongs_to :lang
 
-  def self.suggest( ff )
+  def self.suggest( ff, amm )
     fn = ff.file_path
     ff.category = nil
     ff.lang = nil
@@ -19,7 +19,10 @@ class Extmap < ActiveRecord::Base
         ff.category ||= r.category
         ne          ||= r.noedit
       end          
-    end    
+    end
+    unless amm then
+      ff.category = File.dirname( fn ).split('/')[1] || '/'
+    end
     unless ff.lang then
       ff.lang = Lang.where( :content_type => `file -b --mime-type #{fn}`.strip ).first    
     end
