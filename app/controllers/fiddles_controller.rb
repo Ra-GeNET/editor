@@ -14,7 +14,6 @@ class FiddlesController < ApplicationController
     Site.all.each do |s|
       @tree['Sites'][s.file_path] = [s]
     end
-    @theme_url = "/fiddles/40"
     result = Fiddle.tree( Fiddle.where( :noindex => false, :deleted_at => nil ).where("file_path is NULL").order('title ASC') )
     result = result.sort_by { |k,v| k }
     result = Hash[*result.flatten]
@@ -25,11 +24,6 @@ class FiddlesController < ApplicationController
   # GET /fiddles/hidden.json
   def hidden
     @tree = Fiddle.tree( Fiddle.where( :noindex => true, :deleted_at => nil ).where("file_path is NULL") )
-    if params[:theme] then
-      @theme_url = "/fiddles/#{params[:theme]}"
-    else
-      @theme_url = "/fiddles/40"
-    end    
     render :index
   end
   
@@ -37,11 +31,6 @@ class FiddlesController < ApplicationController
   # GET /fiddles/thrash.json
   def trash
     @tree = Fiddle.tree( Fiddle.where( :noindex => false ).where( "deleted_at IS NOT NULL AND file_path is NULL") )
-    if params[:theme] then
-      @theme_url = "/fiddles/#{params[:theme]}"
-    else
-      @theme_url = "/fiddles/40"
-    end    
     render :index
   end
   
@@ -49,11 +38,6 @@ class FiddlesController < ApplicationController
   # GET /fiddles/all.json
   def all
     @tree = Fiddle.tree( Fiddle.all )
-    if params[:theme] then
-      @theme_url = "/fiddles/#{params[:theme]}"
-    else
-      @theme_url = "/fiddles/40"
-    end    
     render :index
   end
 
@@ -98,7 +82,6 @@ class FiddlesController < ApplicationController
 
   # GET /fiddles/1/edit
   def edit
-    @theme_url = "/fiddles/40"
   end
 
   # POST /fiddles
@@ -153,7 +136,7 @@ class FiddlesController < ApplicationController
     def set_help
       @help = Fiddle.where(:title => "Help").first
       unless @help then
-        @help = Fiddle.create :title => "Help", :code => "Dit is de help file", :lang => "markdown", :skin => "ambiance", :lineheight => "24px", :fontsize => "16px"        
+        @help = Fiddle.create :title => "Help", :code => "Dit is de help file", :langcode => "markdown", :skin => "chaos", :lineheight => "24px", :fontsize => "16px"        
       end      
     end    
 
