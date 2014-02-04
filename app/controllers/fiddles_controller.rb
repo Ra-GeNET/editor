@@ -45,9 +45,15 @@ class FiddlesController < ApplicationController
   # GET /fiddles/1
   # GET /fiddles/1.json
   def show
-    if @fiddle.file_path && !authenticate_with_http_basic { |u, p| u == "rara" && p == "shift123!@#" } then
+    isok = true
+    #if @fiddle.file_path then
+    #  isok = authenticate_with_http_basic do |u, p| 
+    #    isok = u == "rara" && p == "shift123!@#"
+    #  end
+    #end
+    unless isok then          
       render :file => "public/401", :status => :unauthorized
-    else
+    else    
       respond_to do |format|
         l = @fiddle.lang.title
         if l == "Markdown" then
@@ -69,9 +75,9 @@ class FiddlesController < ApplicationController
   # GET /fiddles/1/preview
   # GET /fiddles/1.json
   def preview
-    if @fiddle.file_path && !authenticate_with_http_basic { |u, p| u == "rara" && p == "shift123!@#" } then
-      render :file => "public/401", :status => :unauthorized
-    else
+    #if @fiddle.file_path && !authenticate_with_http_basic { |u, p| u == "rara" && p == "shift123!@#" } then
+    #  render :file => "public/401", :status => :unauthorized
+    #else
       l = @fiddle.lang.title
       if l == "Markdown" then
         render :markdown
@@ -84,7 +90,7 @@ class FiddlesController < ApplicationController
       else
         render :text => @fiddle.code, :content_type => @fiddle.lang.content_type
       end
-    end
+    #end
   end
 
 
