@@ -43,7 +43,12 @@ class Fiddle < ActiveRecord::Base
   end
   
   def refresh
-    self.preview_url ||= "/fiddles/#{self.id}/preview"
+    unless self.file_path then
+      self.preview_url ||= "/fiddles/#{self.id}/preview"
+    else
+      self.preview_url ||= "http://#{self.site.title}/"
+    end
+    
     load_from_disk false
   end  
   

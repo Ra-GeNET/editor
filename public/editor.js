@@ -1,3 +1,6 @@
+// SET CROSS DOMAIN HOST
+document.domain = document.location.host.split('.').splice(-2).join('.')
+
 // UTILITIES
 
   function openTab( url ){  
@@ -480,6 +483,13 @@
         this.unmark('preview-dirty');
         this.reloadPreview();
       }
+      try{
+        var u = $('iframe')[0].contentWindow.location.href;
+        if(u !== "about:blank" && !$('#preview_url').is(":focus") ){
+          self.setPreview( u );
+        }
+      }catch(err){}
+
     });
     
     var self = this;
