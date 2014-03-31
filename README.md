@@ -15,9 +15,10 @@ Things you may want to cover:
 ## Deployment instructions
 
 ```
-  bundle install
-  rake db:migrate
-  
+    bundle install
+    rake db:migrate
+    rake db:data:load_dir
+    rweb
 ```
 
 [More info](https://github.com/Ra-GeNET/tardis)
