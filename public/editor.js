@@ -31,14 +31,18 @@ document.domain = document.location.host.split('.').splice(-2).join('.')
   // INIT ace
   Editor.prototype.initAce = function(){
     ace.require("ace/ext/language_tools");
+    ace.require("ace/ext/emmet");
+
     this.ace = ace.edit( "editor" );    
+    this.ace.setOption("enableEmmet", true);  
     this.ace.setShowPrintMargin( false );
     this.ace.setReadOnly( false );
     this.ace.getSession().setUseWrapMode(true);
     this.ace.getSession().setUseSoftTabs(true);       
     this.ace.setOptions({
-      enableBasicAutocompletion: true //,
-     // enableSnippets: true
+      enableBasicAutocompletion: true, 
+      enableEmmet: true,
+      enableSnippets: true
     });
   }
   
