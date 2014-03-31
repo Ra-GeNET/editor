@@ -1,6 +1,6 @@
 # TARDIS Editor
 
-Web based text-editor. Created by [RalfN](https://github.com/RalfN)
+Web based text-editor. Created by [RalfN](https://github.com/RalfN), and [RamonGebben](https://github.com/RamonGebben)
 
 Things you may want to cover:
 
