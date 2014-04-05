@@ -12,7 +12,7 @@
 <body class='index'>
 
   <h1><%= @site.title %></h1>
-  
+  <a href="/sites/<%= @site.id %>/refresh" class="refresh-list">Refresh file list</a>  
   <div class='row js-masonry'   data-masonry-options='{ "columnWidth": 280, "itemSelector": ".lang" }'>
   <% @tree.each_pair do |k1,v1| %>      
     <div class='lang'>
