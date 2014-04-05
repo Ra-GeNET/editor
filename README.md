@@ -10,7 +10,7 @@ Things you may want to cover:
 
 ## System dependencies
 
-  [Devstar](https://github.com/RamonGebben/devstar) or [TARDIS](https://github.com/Ra-GeNET/tardis)
+  [Devstar](https://github.com/RamonGebben/devstar)
 
 ## Deployment instructions
 
