@@ -21,4 +21,4 @@ Things you may want to cover:
     rweb
 ```
 
-[More info](https://github.com/Ra-GeNET/tardis)
+[More info](https://github.com/RamonGebben/devstar)
