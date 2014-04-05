@@ -1,4 +1,4 @@
-# TARDIS Editor
+# Devstar Editor
 
 Web based text-editor. Created by [RalfN](https://github.com/RalfN), and [RamonGebben](https://github.com/RamonGebben)
 
